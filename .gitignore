@@ -1,0 +1,16 @@
+build
+node_modules
+coverage
+coverage.json
+.coverage.txt
+.env
+contract-addresses.json
+
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+
+.openzeppelin/.session
