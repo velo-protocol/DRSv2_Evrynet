@@ -3,7 +3,7 @@ package logic_test
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/Evrynetlabs/evrynet-node/core/types"
 	"github.com/golang/mock/gomock"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"

@@ -1,7 +1,7 @@
 package vclient
 
 import (
-	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/Evrynetlabs/evrynet-node/crypto"
 	"github.com/golang/mock/gomock"
 	"github.com/velo-protocol/DRSv2_Evrynet/go/libs/vclient/mocks"
 	"testing"

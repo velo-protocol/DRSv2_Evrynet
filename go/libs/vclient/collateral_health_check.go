@@ -1,7 +1,7 @@
 package vclient
 
 import (
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/Evrynetlabs/evrynet-node/common"
 	"github.com/pkg/errors"
 	"github.com/velo-protocol/DRSv2_Evrynet/go/libs/utils"
 	"math/big"

@@ -2,8 +2,8 @@ package logic_test
 
 import (
 	"encoding/json"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/Evrynetlabs/evrynet-node/common"
+	"github.com/Evrynetlabs/evrynet-node/core/types"
 	"github.com/golang/mock/gomock"
 	"github.com/sirupsen/logrus/hooks/test"
 	"github.com/velo-protocol/DRSv2_Evrynet/go/cmd/gvel/entity"

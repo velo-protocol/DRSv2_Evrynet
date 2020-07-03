@@ -6,7 +6,6 @@ import (
 	"github.com/velo-protocol/DRSv2_Evrynet/go/cmd/gvel/layers/commands/environment"
 	"github.com/velo-protocol/DRSv2_Evrynet/go/cmd/gvel/layers/mocks"
 	"github.com/velo-protocol/DRSv2_Evrynet/go/cmd/gvel/utils/console"
-	"github.com/velo-protocol/DRSv2_Evrynet/go/cmd/gvel/utils/mocks"
 	mockutils "github.com/velo-protocol/DRSv2_Evrynet/go/cmd/gvel/utils/mocks"
 	"testing"
 )
