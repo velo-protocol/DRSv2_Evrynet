@@ -2,9 +2,9 @@ package vclient
 
 import (
 	"context"
+	ethereum "github.com/Evrynetlabs/evrynet-node"
 	"github.com/Evrynetlabs/evrynet-node/common"
 	"github.com/Evrynetlabs/evrynet-node/core/types"
-	"github.com/ethereum/go-ethereum"
 	"github.com/golang/mock/gomock"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
