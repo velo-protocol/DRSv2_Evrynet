@@ -1,6 +1,6 @@
 module github.com/velo-protocol/DRSv2_Evrynet/go
 
-go 1.12
+go 1.14
 
 require (
 	github.com/Evrynetlabs/evrynet-node v0.0.0-20200529083755-80c3619a7f9d
