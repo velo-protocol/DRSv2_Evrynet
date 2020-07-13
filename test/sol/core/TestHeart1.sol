@@ -47,22 +47,22 @@ contract TestHeart1 {
 
     function testSetReserveFreeze_Success() public {
         bytes32 assetCode = "VELO";
-        uint32 newSeconds = 15;
+        uint256 newSeconds = 15;
         heart.setReserveFreeze(assetCode, newSeconds);
 
-        uint32 reserveFreezeSecond = heart.getReserveFreeze(assetCode);
+        uint256 reserveFreezeSecond = heart.getReserveFreeze(assetCode);
 
         Assert.equal(uint(reserveFreezeSecond), uint(newSeconds), "heart.setReserveFreeze() should set reserve freeze seconds properly");
     }
 
     function testGetReserveFreeze_Success() public {
         bytes32 assetCode = "VELO";
-        uint32 newSeconds = 15;
+        uint256 newSeconds = 15;
 
         Assert.equal(heart.getReserveFreeze(assetCode), uint(0), "heart.getReserveFreeze() should return reserve freeze second");
 
         heart.setReserveFreeze(assetCode, newSeconds);
-        uint32 reserveFreezeSecond = heart.getReserveFreeze(assetCode);
+        uint256 reserveFreezeSecond = heart.getReserveFreeze(assetCode);
 
         Assert.equal(uint(reserveFreezeSecond), uint(newSeconds), "heart.getReserveFreeze() should return reserve freeze second");
     }
