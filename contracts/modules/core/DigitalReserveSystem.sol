@@ -58,6 +58,7 @@ contract DigitalReserveSystem is IDRS {
     ) external onlyTrustedPartner returns (string memory, address) {
         // validate asset code
         require(bytes(assetCode).length > 0 && bytes(assetCode).length <= 12, "DigitalReserveSystem.setup: invalid assetCode format");
+        require(peggedValue > 0 , "pegged value is greater than 0");
         bytes32 stableCreditId = Hasher.stableCreditId(assetCode);
         IStableCredit stableCredit = heart.getStableCreditById(stableCreditId);
         require(address(stableCredit) == address(0), "DigitalReserveSystem.setup: assetCode has already been used");
@@ -238,7 +239,7 @@ contract DigitalReserveSystem is IDRS {
     function getStableCreditAmount(
         string calldata assetCode
     ) external view returns ( uint256) {
-        require(bytes(assetCode).length > 0 && bytes(assetCode).length <= 12, "DigitalReserveSystem.collateralHealthCheck: invalid assetCode format");
+        require(bytes(assetCode).length > 0 && bytes(assetCode).length <= 12, "DigitalReserveSystem.getStableCreditAmount: invalid assetCode format");
 
         (IStableCredit stableCredit,,, ) = _validateAssetCode(assetCode);
         return stableCredit.totalSupply();
