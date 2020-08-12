@@ -17,7 +17,6 @@ contract Price is Initializable, IPrice {
     }
 
     uint256 public price=0;
-    address public lagAddr;
     address  public  feederAddr;
     bool isErr;
 

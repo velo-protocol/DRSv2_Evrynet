@@ -18,15 +18,13 @@ contract Feeder is IFeeder {
     uint public priceFeedTimeTol = 1 minutes;
     uint public priceUpdateCoolDown=1 minutes;
     uint public numOfPrices = 0;
-    uint public lastOperationTime;
-    uint public operationCoolDown=0;
+
     bool public started = false;
     address public priceFeed1;
     address public priceFeed2;
     address public priceFeed3;
     address public owner;
-    uint256 public valueTimestamp;
-    bool public active;
+
 
     bytes32 public fiatCode;
     bytes32 public collateralCode;
@@ -83,7 +81,6 @@ contract Feeder is IFeeder {
         return true;
     }
 
-
     function commitPrice(uint priceInWei)
     external isPriceFeed
     returns (bool success)
@@ -110,8 +107,7 @@ contract Feeder is IFeeder {
             } else {
                 require(firstPrice.source != msg.sender);
                 // if second price times out, use first one
-                if (firstPrice.timeInSecond.add(priceFeedTimeTol) < timeInSecond ||
-                    firstPrice.timeInSecond.sub(priceFeedTimeTol) > timeInSecond) {
+                if (firstPrice.timeInSecond.add(priceFeedTimeTol) < timeInSecond) {
                     acceptPrice(firstPrice.priceInWei, firstPrice.timeInSecond, firstPrice.source);
                 } else {
                     priceDiff = priceInWei.diff(firstPrice.priceInWei);
@@ -126,7 +122,7 @@ contract Feeder is IFeeder {
                 }
             }
         } else if (numOfPrices == 2) {
-            if (timeInSecond > firstPrice.timeInSecond + priceUpdateCoolDown) {
+            if (timeInSecond > firstPrice.timeInSecond.add(priceUpdateCoolDown)) {
                 if ((firstPrice.source == msg.sender || secondPrice.source == msg.sender))
                     acceptPrice(priceInWei, timeInSecond, msg.sender);
                 else
@@ -135,8 +131,7 @@ contract Feeder is IFeeder {
                 require(firstPrice.source != msg.sender && secondPrice.source != msg.sender);
                 uint acceptedPriceInWei;
                 // if third price times out, use first one
-                if (firstPrice.timeInSecond.add(priceFeedTimeTol) < timeInSecond ||
-                    firstPrice.timeInSecond.sub(priceFeedTimeTol) > timeInSecond) {
+                if (firstPrice.timeInSecond.add(priceFeedTimeTol) < timeInSecond) {
                     acceptedPriceInWei = firstPrice.priceInWei;
                 } else {
                     // take median and proceed
