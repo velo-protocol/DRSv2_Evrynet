@@ -18,19 +18,17 @@ contract Feeder is IFeeder {
     uint public priceFeedTimeTol = 1 minutes;
     uint public priceUpdateCoolDown=1 minutes;
     uint public numOfPrices = 0;
-    uint public lastOperationTime;
-    uint public operationCoolDown=0;
+
     bool public started = false;
     address public priceFeed1;
     address public priceFeed2;
     address public priceFeed3;
     address public owner;
-    uint256 public valueTimestamp;
-    bool public active;
+
 
     bytes32 public fiatCode;
     bytes32 public collateralCode;
-
+    
     event CommitPrice(uint indexed priceInWei, uint indexed timeInSecond, address sender, uint index);
     event AcceptPrice(uint indexed priceInWei, uint indexed timeInSecond, address sender);
     event UpdatePriceFeed(address updater, address newPriceFeed);
@@ -82,7 +80,6 @@ contract Feeder is IFeeder {
         emit AcceptPrice(priceInWei, timeInSecond, msg.sender);
         return true;
     }
-
 
     function commitPrice(uint priceInWei)
     external isPriceFeed

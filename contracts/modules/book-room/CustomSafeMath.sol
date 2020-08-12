@@ -3,25 +3,24 @@ pragma solidity ^0.5.0;
 library CustomSafeMath {
 	function mul(uint a, uint b) internal pure returns (uint) {
 		uint c = a * b;
-		assert(a == 0 || c / a == b);
+		require(a == 0 || c / a == b);
 		return c;
 	}
 
 	function div(uint a, uint b) internal pure returns (uint) {
-		// assert(b > 0); // Solidity automatically throws when dividing by 0
+		require (b > 0 , "CustomSafeMath: division by zero") ;
 		uint c = a / b;
-		// assert(a == b * c + a % b); // There is no case in which this doesn't hold
 		return c;
 	}
 
 	function sub(uint a, uint b) internal pure returns (uint) {
-		assert(b <= a);
+		require(b <= a);
 		return a - b;
 	}
 
 	function add(uint a, uint b) internal pure returns (uint) {
 		uint c = a + b;
-		assert(c >= a);
+		require(c >= a);
 		return c;
 	}
 

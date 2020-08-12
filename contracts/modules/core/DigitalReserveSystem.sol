@@ -95,7 +95,7 @@ contract DigitalReserveSystem is IDRS {
     function mintFromCollateralAmount(
         uint256 netCollateralAmount,
         string calldata assetCode
-    ) external onlyTrustedPartner payable returns (bool) {
+    ) external onlyTrustedPartner  returns (bool) {
         (IStableCredit stableCredit, ICollateralAsset collateralAsset, bytes32 collateralAssetCode, bytes32 linkId) = _validateAssetCode(assetCode);
 
         // validate stable credit belong to the message sender
@@ -128,7 +128,7 @@ contract DigitalReserveSystem is IDRS {
     function mintFromStableCreditAmount(
         uint256 mintAmount,
         string calldata assetCode
-    ) external onlyTrustedPartner payable returns (bool) {
+    ) external onlyTrustedPartner  returns (bool) {
         (IStableCredit stableCredit, ICollateralAsset collateralAsset, bytes32 collateralAssetCode, bytes32 linkId) = _validateAssetCode(assetCode);
 
         // validate stable credit belong to the message sender
@@ -210,7 +210,7 @@ contract DigitalReserveSystem is IDRS {
 
     function rebalance(
         string calldata assetCode
-    ) external payable returns (bool) {
+    ) external  returns (bool) {
         return _rebalance(assetCode);
     }
 
