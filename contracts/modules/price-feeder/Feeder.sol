@@ -28,7 +28,7 @@ contract Feeder is IFeeder {
 
     bytes32 public fiatCode;
     bytes32 public collateralCode;
-    
+
     event CommitPrice(uint indexed priceInWei, uint indexed timeInSecond, address sender, uint index);
     event AcceptPrice(uint indexed priceInWei, uint indexed timeInSecond, address sender);
     event UpdatePriceFeed(address updater, address newPriceFeed);
@@ -107,8 +107,7 @@ contract Feeder is IFeeder {
             } else {
                 require(firstPrice.source != msg.sender);
                 // if second price times out, use first one
-                if (firstPrice.timeInSecond.add(priceFeedTimeTol) < timeInSecond ||
-                    firstPrice.timeInSecond.sub(priceFeedTimeTol) > timeInSecond) {
+                if (firstPrice.timeInSecond.add(priceFeedTimeTol) < timeInSecond) {
                     acceptPrice(firstPrice.priceInWei, firstPrice.timeInSecond, firstPrice.source);
                 } else {
                     priceDiff = priceInWei.diff(firstPrice.priceInWei);
@@ -123,7 +122,7 @@ contract Feeder is IFeeder {
                 }
             }
         } else if (numOfPrices == 2) {
-            if (timeInSecond > firstPrice.timeInSecond + priceUpdateCoolDown) {
+            if (timeInSecond > firstPrice.timeInSecond.add(priceUpdateCoolDown)) {
                 if ((firstPrice.source == msg.sender || secondPrice.source == msg.sender))
                     acceptPrice(priceInWei, timeInSecond, msg.sender);
                 else
@@ -132,8 +131,7 @@ contract Feeder is IFeeder {
                 require(firstPrice.source != msg.sender && secondPrice.source != msg.sender);
                 uint acceptedPriceInWei;
                 // if third price times out, use first one
-                if (firstPrice.timeInSecond.add(priceFeedTimeTol) < timeInSecond ||
-                    firstPrice.timeInSecond.sub(priceFeedTimeTol) > timeInSecond) {
+                if (firstPrice.timeInSecond.add(priceFeedTimeTol) < timeInSecond) {
                     acceptedPriceInWei = firstPrice.priceInWei;
                 } else {
                     // take median and proceed
