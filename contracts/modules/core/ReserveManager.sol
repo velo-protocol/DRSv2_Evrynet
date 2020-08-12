@@ -8,7 +8,7 @@ import "../interfaces/IRM.sol";
 import "../interfaces/IHeart.sol";
 
 
-contract ReserveManager is IRM {
+contract ReserveManager is IRM,ReentrancyGuard {
     IHeart public heart;
     /*
         WARNINGS: DO NOT SEND TOKEN TO THIS CONTRACT DIRECTLY
@@ -64,7 +64,7 @@ contract ReserveManager is IRM {
         emit LockReserve(lockedReserveId);
     }
 
-    function releaseReserve(bytes32 lockedReserveId, bytes32 assetCode, uint256 amount) external nonReentrant{
+    function releaseReserve(bytes32 lockedReserveId, bytes32 assetCode, uint256 amount) external nonReentrant {
         require(now.sub(lockedReserves[lockedReserveId].time) > heart.getReserveFreeze(assetCode), "release time not reach");
         require(lockedReserves[lockedReserveId].owner == msg.sender, "only owner can release reserve");
         uint256 balance= heart.getCollateralAsset(assetCode).balanceOf(address(this));
