@@ -68,8 +68,6 @@ contract ReserveManager is IRM,ReentrancyGuard {
     function releaseReserve(bytes32 lockedReserveId, bytes32 assetCode, uint256 amount) external nonReentrant {
         require(now.sub(lockedReserves[lockedReserveId].time) > heart.getReserveFreeze(assetCode), "release time not reach");
         require(lockedReserves[lockedReserveId].owner == msg.sender, "only owner can release reserve");
-        uint256 balance= heart.getCollateralAsset(assetCode).balanceOf(address(this));
-        require(balance>amount,"balance is not enough");
 
         heart.getCollateralAsset(assetCode).transfer(msg.sender, amount);
 
