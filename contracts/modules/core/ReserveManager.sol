@@ -47,7 +47,7 @@ contract ReserveManager is IRM,ReentrancyGuard {
     event InjectCollateral(bytes32 indexed assetCode, uint256 amount);
     event LockReserve(bytes32 indexed lockedReserveId);
 
-    function lockReserve(bytes32 assetCode, address from, uint256 amount) external {
+    function lockReserve(bytes32 assetCode, address from, uint256 amount) external nonReentrant {
         uint256 balance= heart.getCollateralAsset(assetCode).balanceOf(address(this));
         heart.getCollateralAsset(assetCode).transferFrom(from, address(this), amount);
         uint256 balance1= heart.getCollateralAsset(assetCode).balanceOf(address(this));
