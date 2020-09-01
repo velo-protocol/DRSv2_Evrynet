@@ -36,7 +36,7 @@ contract Price is Initializable, IPrice {
 
     function post() external {
         (uint lagPrice,) = IFeeder(feederAddr).getLastPrice();
-        require(lagPrice>0,"price need >0");
+        require(lagPrice>0&&active==true,"price need >0 or non-active");
         isErr=false;
         price = lagPrice;
     }
