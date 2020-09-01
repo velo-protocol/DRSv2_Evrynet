@@ -11,7 +11,7 @@ func StringToAmount(number string) (*big.Int, error) {
 		return nil, err
 	}
 
-	d = d.Shift(7)
+	d = d.Shift(5)
 	b := new(big.Int)
 	b, _ = b.SetString(d.String(), 10)
 
@@ -20,13 +20,12 @@ func StringToAmount(number string) (*big.Int, error) {
 
 func AmountToString(amount *big.Int) string {
 	d := decimal.NewFromInt(amount.Int64())
-	d = d.Shift(-7).Truncate(7)
-
-	return d.StringFixed(7)
+	d = d.Shift(-5).Truncate(5)
+	return d.StringFixed(5)
 }
 
 func IsDecimalValid(s decimal.Decimal) bool {
-	d1 := s.Shift(7)
+	d1 := s.Shift(5)
 	d2 := d1.Truncate(0)
 	if !d1.Equal(d2) {
 		return false

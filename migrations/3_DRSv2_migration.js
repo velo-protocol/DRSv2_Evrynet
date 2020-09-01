@@ -40,7 +40,7 @@ module.exports = async function (deployer, network, accounts) {
 
     const adminAddress = accounts[0];
 
-    await deployer.deploy(Token, "VELO", "VELO", 7);
+    await deployer.deploy(Token, "VELO", "VELO", 5);
     const veloToken = await Token.deployed();
     await veloToken.mint(adminAddress, veloMintAmount);
 
