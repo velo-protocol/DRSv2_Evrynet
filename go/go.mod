@@ -3,7 +3,7 @@ module github.com/velo-protocol/DRSv2_Evrynet/go
 go 1.14
 
 require (
-	github.com/Evrynetlabs/evrynet-node v0.0.0-20200529083755-80c3619a7f9d
+	github.com/Evrynetlabs/evrynet-node v0.0.0-20200817055822-91d38f8c91f2
 	github.com/briandowns/spinner v1.8.0
 	github.com/ethereum/go-ethereum v1.9.15
 	github.com/fatih/color v1.7.0
