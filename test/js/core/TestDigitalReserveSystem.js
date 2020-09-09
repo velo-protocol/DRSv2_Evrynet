@@ -281,12 +281,12 @@ contract("DigitalReserveSystem test", async accounts => {
 
       await mocks.heart.givenMethodReturnUint(
         heart.contract.methods.getCreditIssuanceFee().encodeABI(),
-        100000
+        1000
       );
 
       await mocks.heart.givenMethodReturnUint(
         heart.contract.methods.getCollateralRatio(Web3.utils.fromAscii('VELO')).encodeABI(),
-        10000000
+        100000
       );
 
       await mocks.stableCreditVTHB.givenMethodReturnUint(
@@ -531,12 +531,12 @@ contract("DigitalReserveSystem test", async accounts => {
 
       await mocks.heart.givenMethodReturnUint(
         heart.contract.methods.getCreditIssuanceFee().encodeABI(),
-        100000
+        1000
       );
 
       await mocks.heart.givenMethodReturnUint(
         heart.contract.methods.getCollateralRatio(Web3.utils.fromAscii('VELO')).encodeABI(),
-        10000000
+        100000
       );
 
       await mocks.stableCreditVUSD.givenMethodReturnUint(
@@ -732,7 +732,7 @@ contract("DigitalReserveSystem test", async accounts => {
       );
       await mocks.heart.givenMethodReturnUint(
         heart.contract.methods.getCollateralRatio(Web3.utils.fromAscii("")).encodeABI(),
-        13000000
+        130000
       );
       await mocks.stableCreditVTHB.givenMethodReturnUint(
         stableCreditVTHB.contract.methods.peggedValue().encodeABI(),
@@ -980,7 +980,7 @@ contract("DigitalReserveSystem test", async accounts => {
       );
       await mocks.heart.givenMethodReturnUint(
         heart.contract.methods.getCollateralRatio(Web3.utils.fromAscii("")).encodeABI(),
-        100000000
+        1000000
       );
 
       await mocks.stableCreditVUSD.givenMethodReturnUint(
@@ -1091,7 +1091,7 @@ contract("DigitalReserveSystem test", async accounts => {
       );
       await mocks.heart.givenMethodReturnUint(
         heart.contract.methods.getCollateralRatio(Web3.utils.fromAscii("")).encodeABI(),
-        10000000
+        100000
       );
       await mocks.stableCreditVUSD.givenMethodReturnUint(
         stableCreditVUSD.contract.methods.peggedValue().encodeABI(),
@@ -1150,7 +1150,7 @@ contract("DigitalReserveSystem test", async accounts => {
       );
       await mocks.heart.givenMethodReturnUint(
         heart.contract.methods.getCollateralRatio(Web3.utils.fromAscii("")).encodeABI(),
-        10000000
+        100000
       );
       await mocks.stableCreditVUSD.givenMethodReturnUint(
         stableCreditVUSD.contract.methods.peggedValue().encodeABI(),
@@ -1266,7 +1266,7 @@ contract("DigitalReserveSystem test", async accounts => {
       );
       await mocks.heart.givenMethodReturnUint(
         heart.contract.methods.getCollateralRatio(Web3.utils.fromAscii("")).encodeABI(),
-        10000000
+        100000
       );
       await mocks.stableCreditVUSD.givenMethodReturnUint(
         stableCreditVUSD.contract.methods.peggedValue().encodeABI(),

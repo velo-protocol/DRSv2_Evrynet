@@ -197,9 +197,10 @@ contract("Price test", async accounts => {
         );
 
       await price.void();
+      const activateResult = await price.activate();
       await price.post();
 
-      const activateResult = await price.activate();
+
 
       truffleAssert.eventEmitted(activateResult, 'PriceActivate', event => {
         return event.caller === accounts[0]

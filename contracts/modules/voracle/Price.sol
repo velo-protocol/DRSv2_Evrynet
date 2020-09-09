@@ -61,7 +61,6 @@ contract Price is Initializable, IPrice {
 
     function activate() external onlyOwner {
         require(active == false, "Price.activate: price is active");
-        require(price > 0, "Price.activate: price is not in a correct state");
         active = true;
         emit PriceActivate(msg.sender, address(this), active);
     }

@@ -34,7 +34,7 @@ contract StableCredit is ERC20, ERC20Detailed {
         uint256 _peggedValue,
         address heartAddr
     )
-    public ERC20Detailed(_code, _code, 7) {
+    public ERC20Detailed(_code, _code, 5) {
         creditOwner = _creditOwner;
         peggedValue = _peggedValue;
         peggedCurrency = _peggedCurrency;
