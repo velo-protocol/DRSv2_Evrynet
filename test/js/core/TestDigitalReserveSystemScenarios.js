@@ -25,10 +25,10 @@ contract("DigitalReserveSystem Scenario Test", async accounts => {
 
   it("should work!", async () => {
     const calInputs = {
-      issuanceFeeRate: h.decimal7(0.05), // 0.05 (5%)
-      price: h.decimal7(10.00), // 10.00 USD/VELO
-      collateralRatio: h.decimal7(1.3), // 1.30
-      peggedValue: h.decimal7(1.00) // 1.00
+      issuanceFeeRate: h.decimal5(0.05), // 0.05 (5%)
+      price: h.decimal5(10.00), // 10.00 USD/VELO
+      collateralRatio: h.decimal5(1.3), // 1.30
+      peggedValue: h.decimal5(1.00) // 1.00
     };
 
     const [deployer, bob, alice, pf] = accounts;
@@ -59,7 +59,7 @@ contract("DigitalReserveSystem Scenario Test", async accounts => {
     await heart.setAllowedLink(web3.utils.soliditySha3(veloBytes32, usdBytes32), true);
 
     // Approve DRS to spend VELO
-    await veloCollateralAsset.approve(drs.address, 10000000000, {from: bob});
+    await veloCollateralAsset.approve(drs.address, 10000000000000, {from: bob});
 
     // 1. Test drs.setup
     const setupResult = await drs.setup(veloBytes32, usdBytes32, "vUSD", calInputs.peggedValue, {from: bob}); // pegged value 1.00
@@ -116,7 +116,7 @@ contract("DigitalReserveSystem Scenario Test", async accounts => {
     };
     assert.equal(getExchangeResult.assetCode, "vUSD");
     h.assert.equalByteString(getExchangeResult.collateralAssetCode, velo);
-    h.assert.equalNumber(getExchangeResult.priceInCollateralPerAssetUnit.toString(), 1300000);
+    h.assert.equalNumber(getExchangeResult.priceInCollateralPerAssetUnit.toString(), 13000);
 
     // 5. Test drs.redeem
     const redeemResult = await drs.redeem(160769230, "vUSD", {from: bob});
@@ -150,7 +150,7 @@ contract("DigitalReserveSystem Scenario Test", async accounts => {
     // 7. Test drs.rebalance
 
     // change collateral ratio
-    const newRatio = h.decimal7(1.2);
+    const newRatio = h.decimal5(1.2);
     await heart.setCollateralRatio(veloBytes32, newRatio);
 
     const rebalanceResult = await drs.rebalance("vUSD");

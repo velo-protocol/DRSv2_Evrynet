@@ -26,7 +26,7 @@ module.exports = async function (deployer, network, accounts) {
     const thbBytes32 = Web3.utils.fromAscii("THB");
     const sgdBytes32 = Web3.utils.fromAscii("SGD");
 
-    const veloMintAmount = 10000000000000;
+    const veloMintAmount = 3000000000000000;
 
     const priceUSD = await Price.at(process.migration.contractAddress.priceProxyUSD);
     const priceTHB = await Price.at(process.migration.contractAddress.priceProxyTHB);
@@ -45,14 +45,14 @@ module.exports = async function (deployer, network, accounts) {
     await veloToken.mint(adminAddress, veloMintAmount);
 
     console.log("Set Collateral assets");
-    await heartInstance.setCollateralAsset(veloBytes32, veloToken.address, 13000000); // 1.3
+    await heartInstance.setCollateralAsset(veloBytes32, veloToken.address, 130000); // 1.3
     await heartInstance.setTrustedPartner(adminAddress);
     await heartInstance.setCreditIssuanceFee(500000);  // 0.05 (5%)
     await heartInstance.setAllowedLink(await hasher.linkId(veloBytes32, usdBytes32), true);
     await heartInstance.setAllowedLink(await hasher.linkId(veloBytes32, thbBytes32), true);
     await heartInstance.setAllowedLink(await hasher.linkId(veloBytes32, sgdBytes32), true);
-
     console.log("Approve DRS to spend VELO");
     await veloToken.approve(drsInstance.address, veloMintAmount);
+
   }
 };
