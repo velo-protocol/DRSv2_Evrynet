@@ -47,7 +47,7 @@ module.exports = async function (deployer, network, accounts) {
     console.log("Set Collateral assets");
     await heartInstance.setCollateralAsset(veloBytes32, veloToken.address, 130000); // 1.3
     await heartInstance.setTrustedPartner(adminAddress);
-    await heartInstance.setCreditIssuanceFee(500000);  // 0.05 (5%)
+    await heartInstance.setCreditIssuanceFee(5000);  // 0.05 (5%)
     await heartInstance.setAllowedLink(await hasher.linkId(veloBytes32, usdBytes32), true);
     await heartInstance.setAllowedLink(await hasher.linkId(veloBytes32, thbBytes32), true);
     await heartInstance.setAllowedLink(await hasher.linkId(veloBytes32, sgdBytes32), true);
