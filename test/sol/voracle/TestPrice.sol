@@ -35,8 +35,8 @@ contract TestPrice {
 
     function testActivate() public {
         priceContract.void();
-        priceContract.post();
         priceContract.activate();
+        priceContract.post();
         (uint256 price, bool isActive, bool isErr) = priceContract.getWithError();
         Assert.equal(price, 100, "price should be 0");
         Assert.equal(isActive, true, "isActive are should be false");

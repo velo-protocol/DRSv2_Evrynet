@@ -5,6 +5,9 @@ module.exports = {
   decimal7(float) {
     return Math.trunc(float * Math.pow(10, 7));
   },
+  decimal5(float) {
+    return Math.trunc(float * Math.pow(10, 5));
+  },
   methodABI(contractInstance, methodName, methodArgs = []) {
     return contractInstance.contract.methods[methodName](...methodArgs).encodeABI();
   },
