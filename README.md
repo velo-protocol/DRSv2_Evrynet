@@ -64,6 +64,14 @@ $ yarn run reset
 ```sh
 $ yarn run reset:dev
 ```
+##### 3. Interact with the smart contract in local 
+```shell script
+$ yarn run console
+```
+##### 4. Interact with the smart contract in dev 
+```shell script
+$ yarn run console:dev
+```
 
 
 #### Running test
