@@ -16,9 +16,9 @@ module.exports = async (deployer, network, accounts) => {
     const usdBytes32 = web3.utils.fromAscii("USD");
     const thbBytes32 = web3.utils.fromAscii("THB");
     const sgdBytes32 = web3.utils.fromAscii("SGD");
-  var  pf1 = 'address';
-  var  pf2 = 'address';
-  var  pf3 = 'address';
+  var  pf1 = "0xBC4eBC93A59F117fF6BDB678F91eF5f38a0e1e2F";
+  var  pf2 = "0xBC4eBC93A59F117fF6BDB678F91eF5f38a0e1e2F";
+  var  pf3 = "0xBC4eBC93A59F117fF6BDB678F91eF5f38a0e1e2F";
     // 1. Create 3 feeders
     let result = await feederFactory.create(pf1,pf2,pf3,usdBytes32, veloBytes32);
     const usdFeederAddr = result.logs[0].args.feedAddr;

@@ -30,7 +30,7 @@ See [Golang implementations](./go/README.md) here
 To install DRSv2, you need to install 
 NodeJs 10.16.3,
 [Truffle](https://www.trufflesuite.com/docs/truffle/getting-started/installation) and 
-[Ganache](https://www.trufflesuite.com/ganache) first.
+[Evrynet](https://github.com/Evrynetlabs/evrynet-node) first.
 
 1. You can use the command below to install [Truffle](https://www.trufflesuite.com/docs/truffle/getting-started/installation).
 
@@ -44,11 +44,11 @@ $ yarn global add truffle
 $ yarn install
 ```
 
-3. Run Ganache
+3. Run Evrynet
 
-4. After that you can run the command below to deploy Velo Protocol smart contracts to your local network
+4. After that you can run the command below to deploy Velo Protocol smart contracts to your dev network
 ```sh
-$ yarn run reset
+$ ./deploy_evrynet.sh
 ```
 5. Now you can interact with the smart contract via `truffle console` 
 6. Modify the migration script in `./migrations` to control the how the smart contract should be setup.
