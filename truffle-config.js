@@ -1,12 +1,23 @@
 require('dotenv').config();
 
 const PrivateKeyProvider = require("truffle-privatekey-provider");
+const LedgerWalletProvider = require('truffle-ledger-provider');
+//Contract data: Yes
+// Browser Support: No
+
+const ledgerOptions = {
+  networkId: "*", // mainnet
+  path: "44'/60'/0'/0", // ledger default derivation path
+  askConfirm: false,
+  accountsLength: 1,
+  accountsOffset: 0
+}; // use default options
 
 module.exports = {
   networks: {
     local: {
       host: "127.0.0.1",
-      port: 7545,
+      port: 8545,
       network_id: "*"
     },
     dev: {
@@ -15,6 +26,11 @@ module.exports = {
       gasPrice: 1000000000,
       gas: 6357193,
       production: false
+    },
+    ledger: {
+      provider: new LedgerWalletProvider(ledgerOptions, process.env.DEV_SCC_HOST),
+      network_id: 3,
+      gas: 4600000
     },
     coverage: {
       host: "localhost",
