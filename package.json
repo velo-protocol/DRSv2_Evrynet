@@ -5,6 +5,7 @@
   "scripts": {
     "reset": "truffle migrate --f 1 --to 3 --network local",
     "reset:dev": "truffle migrate --f 1 --to 3 --network dev",
+    "reset:ledger": "truffle migrate --f 1 --to 3 --network ledger",
     "test": "truffle test --network local",
     "test:js": "truffle test --network local test/js/**/Test**.js",
     "test:sol": "truffle test --network local test/sol/**/Test**.sol",
@@ -25,6 +26,7 @@
     "dotenv": "^8.2.0",
     "ethereumjs-abi": "^0.6.8",
     "solidity-coverage": "^0.6.7",
+    "truffle-ledger-provider": "^1.0.3",
     "truffle-privatekey-provider": "^1.3.0",
     "web3": "^1.2.6"
   },
