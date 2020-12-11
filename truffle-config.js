@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+require("@babel/polyfill");
 const PrivateKeyProvider = require("truffle-privatekey-provider");
 const LedgerWalletProvider = require('truffle-ledger-provider');
 //Contract data: Yes
